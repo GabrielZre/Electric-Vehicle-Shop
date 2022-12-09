@@ -9,8 +9,8 @@ public class UserDB {
     private static final UserDB instance = new UserDB();
 
     private UserDB() {
-        this.users[0] = new User("admin", "eb0468abcd9f88e9844fd140fbb6acff", User.Role.ADMIN);
-        this.users[1] = new User("gabriel", "6fff9bb96e12805ea3ccb8ec27e8206f", User.Role.USER);
+        this.users[0] = new User("admin", "1671dfc274ad7e8d560df28ac0eb3e45", User.Role.ADMIN);
+        this.users[1] = new User("gabriel", "4754793fa06ffec9db217a94cc2215c3", User.Role.USER);
     }
 
     public User[] getUsers() {

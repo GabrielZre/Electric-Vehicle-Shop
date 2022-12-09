@@ -7,7 +7,7 @@ import products.User;
 public class Authenticator {
     final UserDB userDB = UserDB.getInstance();
     private User loggedUser = null;
-    private static final String seed = "OK4wkjJ15XD@T*41pO9M21t^rLhlt#&9srznHWyo";
+    private static final String seed = "Xw3wkjW51XD#*(2xdOsd21t^w5jld125qzsnOWq2";
     private static final Authenticator instance = new Authenticator();
 
     private Authenticator() {
