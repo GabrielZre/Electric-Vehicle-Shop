@@ -26,6 +26,7 @@ public class GUI {
                 this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
             System.out.println("4. Add electric vehicle");
             System.out.println("5. Change user's role");
+            System.out.println("6. Fill up stock");
         }
         return scanner.nextLine();
     }
@@ -82,7 +83,15 @@ public class GUI {
         if(result) {
             System.out.println("Role changed successful");
         } else {
-            System.out.println("Bad role or login!");
+            System.out.println("Bad login or role!");
+        }
+    }
+
+    public void showAddStockResult(boolean result) {
+        if(result) {
+            System.out.println("Successfully filled up stock");
+        } else {
+            System.out.println("Incorrect code or amount!");
         }
     }
 
@@ -144,7 +153,7 @@ public class GUI {
         int inStock = Integer.parseInt(this.scanner.nextLine());
         switch (choose) {
             case "1":
-                System.out.println("Wheel drive: (Front/Rear/AWD");
+                System.out.println("Wheel drive: (Front/Rear/AWD)");
                 return new ElectricScooter(brand, model, year, price, drivingRange, maxSpeed
                         , wheelInch, batteryCapacity, peakPower, voltage, weight, suspension
                         , solidTire, maxLoad,

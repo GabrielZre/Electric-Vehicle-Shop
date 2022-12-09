@@ -76,6 +76,13 @@ public class Core {
                         this.gui.showChangeRoleResult(this.userDB.changeUserRole(this.gui.readUser(), this.gui.readRole()));
                         break;
                     }
+                case "6":
+                    if(this.authenticator.getLoggedUser() != null &&
+                            this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
+                        this.gui.listElectricVehicles();
+                        this.gui.showAddStockResult(this.electricVehicleDB.addStock(this.gui.readCode(),this.gui.readAmount()));
+                        break;
+                    }
                 default:
                     System.out.println("Wrong choose !!");
                     break;

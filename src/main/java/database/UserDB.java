@@ -1,7 +1,8 @@
 package database;
 
-import products.ElectricVehicle;
 import products.User;
+
+import java.util.Arrays;
 
 public class UserDB {
     private User[] users = new User[2];
@@ -27,10 +28,12 @@ public class UserDB {
     }
 
     public void addUser(User user) {
-        User[] newUsers = new User[this.users.length +1];
+        /*User[] newUsers = new User[this.users.length +1];
         for(int i=0; i < this.users.length; i++) {
-            newUsers[i] = this.users[i];
-        }
+           newUsers[i] = this.users[i];
+        }*/
+        User[] newUsers = Arrays.copyOf(users, users.length + 1);
+
         newUsers[newUsers.length - 1] = user;
         this.users = newUsers;
     }
@@ -38,10 +41,15 @@ public class UserDB {
     public boolean changeUserRole(String login, String role) {
         for(User user : this.users) {
             if(user.getLogin().equals(login) ){
+                try {
                     user.setRole(User.Role.valueOf(role));
                     return true;
+
+                } catch (IllegalArgumentException e) {
+                    return false;
                 }
             }
+        }
 
         return false;
     }

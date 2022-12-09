@@ -26,7 +26,7 @@ public class ElectricScooter extends ElectricVehicle {
     @Override
     public String toString() {
         return new StringBuilder(super.toString())
-                .append(" Napęd: ")
+                .append(" Wheel drive: ")
                 .append(this.getWheelDrive())
                 .toString();
     }
