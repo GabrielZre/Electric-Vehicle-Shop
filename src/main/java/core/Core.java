@@ -5,9 +5,6 @@ import database.ElectricVehicleDB;
 import gui.GUI;
 import products.User;
 
-
-import database.ElectricVehicleDB;
-
 public class Core {
     final ElectricVehicleDB electricVehicleDB = ElectricVehicleDB.getInstance();
     final UserDB userDB = UserDB.getInstance();
@@ -20,9 +17,9 @@ public class Core {
 
     }
     boolean isRunning = false;
-    int counter =  0;
 
     public void start() {
+        int counter =  0;
         boolean isLogged = false;
         while(!isLogged){
             switch (this.gui.showLoginMenu()) {
@@ -63,26 +60,35 @@ public class Core {
                 case "3":
                     isRunning = false;
                     break;
+
                 case "4":
+                    this.authenticator.Logout();
+                    isRunning = false;
+                    System.out.println("Logged Out Successfully!");
+                    start();
+                    break;
+
+                case "5":
                     if(this.authenticator.getLoggedUser() != null &&
                             this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
                         this.electricVehicleDB.addElectricVehicle(this.gui.readNewElectricVehicleData());
                         break;
                     }
-                case "5":
+                case "6":
                     if(this.authenticator.getLoggedUser() != null &&
                             this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
                         this.gui.listUsers();
                         this.gui.showChangeRoleResult(this.userDB.changeUserRole(this.gui.readUser(), this.gui.readRole()));
                         break;
                     }
-                case "6":
+                case "7":
                     if(this.authenticator.getLoggedUser() != null &&
                             this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
                         this.gui.listElectricVehicles();
                         this.gui.showAddStockResult(this.electricVehicleDB.addStock(this.gui.readCode(),this.gui.readAmount()));
                         break;
                     }
+
                 default:
                     System.out.println("Wrong choose !!");
                     break;

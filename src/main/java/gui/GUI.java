@@ -22,11 +22,12 @@ public class GUI {
         System.out.println("1. List electric vehicles");
         System.out.println("2. Buy electric vehicle");
         System.out.println("3. Exit");
+        System.out.println("4. Logout");
         if (this.authenticator.getLoggedUser() != null &&
                 this.authenticator.getLoggedUser().getRole() == User.Role.ADMIN) {
-            System.out.println("4. Add electric vehicle");
-            System.out.println("5. Change user's role");
-            System.out.println("6. Fill up stock");
+            System.out.println("5. Add electric vehicle");
+            System.out.println("6. Change user's role");
+            System.out.println("7. Fill up stock");
         }
         return scanner.nextLine();
     }
@@ -86,6 +87,7 @@ public class GUI {
             System.out.println("Bad login or role!");
         }
     }
+
 
     public void showAddStockResult(boolean result) {
         if(result) {
