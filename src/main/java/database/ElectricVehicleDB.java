@@ -38,13 +38,10 @@ public class ElectricVehicleDB {
                     electricVehicle.setInStock(electricVehicle.getInStock() - amount);
                     return true;
                 } else {
-                    if(electricVehicle.getInStock() != 0) {
+                    if(electricVehicle.getInStock() < amount) {
                         System.out.println("You can buy " + electricVehicle.getInStock() + " pieces of this product at the moment");
                     }
-                    return false;
                 }
-            } else {
-                return false;
             }
         }
         return false;
@@ -66,10 +63,7 @@ public class ElectricVehicleDB {
             if(electricVehicle.getCode() == code ){
                 electricVehicle.setInStock(electricVehicle.getInStock() + amount);
                 return true;
-            } else {
-                return false;
             }
-
         }
         return false;
     }
