@@ -2,18 +2,21 @@ package database;
 
 import products.User;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class UserDB {
-    private User[] users = new User[2];
+    private List<User> users = new ArrayList<>();
     private static final UserDB instance = new UserDB();
 
     private UserDB() {
-        this.users[0] = new User("admin", "1671dfc274ad7e8d560df28ac0eb3e45", User.Role.ADMIN);
-        this.users[1] = new User("gabriel", "4754793fa06ffec9db217a94cc2215c3", User.Role.USER);
+        users.add(new User("admin", "1671dfc274ad7e8d560df28ac0eb3e45", User.Role.ADMIN));
+        users.add(new User("gabriel", "4754793fa06ffec9db217a94cc2215c3", User.Role.USER));
     }
 
-    public User[] getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
@@ -32,10 +35,7 @@ public class UserDB {
         for(int i=0; i < this.users.length; i++) {
            newUsers[i] = this.users[i];
         }*/
-        User[] newUsers = Arrays.copyOf(users, users.length + 1);
-
-        newUsers[newUsers.length - 1] = user;
-        this.users = newUsers;
+        this.users.add(user);
     }
 
     public boolean changeUserRole(String login, String role) {
