@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import static products.User.Role.valueOf;
+
 public class UserDB {
     private List<User> users = new ArrayList<>();
     private static final UserDB instance = new UserDB();
@@ -22,12 +24,16 @@ public class UserDB {
 
 
     public User findByLogin(String login) {
+    /*
         for(User user : this.users) {
             if(user.getLogin().equals(login)) {
                 return user;
             }
         }
-        return null;
+
+    */
+        return this.users.stream().filter( s -> s.getLogin().equals(login)).
+                findFirst().orElse(null);
     }
 
     public void addUser(User user) {
@@ -39,6 +45,7 @@ public class UserDB {
     }
 
     public boolean changeUserRole(String login, String role) {
+        /*        findFirst().orElse(null);
         for(User user : this.users) {
             if(user.getLogin().equals(login) ){
                 try {
@@ -52,7 +59,17 @@ public class UserDB {
         }
 
         return false;
+        */
+        return this.users.stream()
+                .filter(user -> user.getLogin().equals(login))
+                .map(user -> {
+                    user.setRole(User.Role.valueOf(role));
+                    return true;
+                })
+                .findFirst()
+                .orElse(false);
     }
+
 
     public static UserDB getInstance() {
         return instance;

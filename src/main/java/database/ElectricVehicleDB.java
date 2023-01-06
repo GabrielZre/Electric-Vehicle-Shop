@@ -34,6 +34,7 @@ public class ElectricVehicleDB {
     }
 
     public boolean buyVehicle(int code, int amount) {
+        /*
         for(ElectricVehicle electricVehicle : this.electricVehicles) {
             if(electricVehicle.getCode() == code ){
                 if(electricVehicle.getInStock() >= amount) {
@@ -47,6 +48,16 @@ public class ElectricVehicleDB {
             }
         }
         return false;
+
+         */
+        return this.electricVehicles.stream().filter(s -> s.getCode() == code)
+                .filter(s -> s.getInStock() >= amount)
+                .map(s -> {
+                    s.setInStock(s.getInStock() - amount);
+                    return true;
+                })
+                .findFirst()
+                .orElse(false);
     }
 
     public void addElectricVehicle(ElectricVehicle electricVehicle) {
@@ -63,6 +74,7 @@ public class ElectricVehicleDB {
     }
 
     public boolean addStock(int code, int amount) {
+        /*
         for(ElectricVehicle electricVehicle : this.electricVehicles) {
             if(electricVehicle.getCode() == code ){
                 electricVehicle.setInStock(electricVehicle.getInStock() + amount);
@@ -70,6 +82,14 @@ public class ElectricVehicleDB {
             }
         }
         return false;
+        */
+        return this.electricVehicles.stream().filter(s -> s.getCode() == code)
+                .map(s -> {
+                    s.setInStock(s.getInStock() + amount);
+                    return true;
+                })
+                .findFirst()
+                .orElse(false);
     }
 
     public static ElectricVehicleDB getInstance() {

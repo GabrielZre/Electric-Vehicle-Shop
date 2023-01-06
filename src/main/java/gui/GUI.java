@@ -76,7 +76,7 @@ public class GUI {
         if(result) {
             System.out.println("Product bought successful");
         } else {
-            System.out.println("Product is not available yet");
+            System.out.println("Product is not available yet or amount too big");
         }
     }
 
