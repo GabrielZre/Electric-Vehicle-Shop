@@ -1,6 +1,6 @@
 package products;
 
-public class ElectricUnicycle extends ElectricVehicle{
+public final class ElectricUnicycle extends ElectricVehicle{
     public ElectricUnicycle(String brand, String model, int year, double price, double drivingRange,
                             double maxSpeed, double wheelInch, double batteryCapacity, double peakPower, double voltage,
                             double weight, boolean suspension, boolean solidTire, int maxLoad, int code, int inStock) {

@@ -1,6 +1,6 @@
 package products;
 
-public class ElectricBike extends ElectricVehicle{
+public final class ElectricBike extends ElectricVehicle{
     private int gears;
 
     public ElectricBike(String brand, String model, int year, double price, double drivingRange

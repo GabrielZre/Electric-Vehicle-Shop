@@ -1,6 +1,6 @@
 package products;
 
-public class ElectricSkateboard extends ElectricVehicle{
+public final class ElectricSkateboard extends ElectricVehicle{
 
     public ElectricSkateboard(String brand, String model, int year, double price, double drivingRange
             , double maxSpeed, double wheelInch, double batteryCapacity, double peakPower, double voltage, double weight

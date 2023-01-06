@@ -1,6 +1,6 @@
 package products;
 
-public class ElectricVehicle {
+public sealed class ElectricVehicle permits ElectricBike, ElectricScooter, ElectricSkateboard, ElectricUnicycle, ElectricWheelchair{
     private String brand;
     private String model;
     private int year;

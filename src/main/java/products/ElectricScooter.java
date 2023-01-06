@@ -1,6 +1,6 @@
 package products;
 
-public class ElectricScooter extends ElectricVehicle {
+public final class ElectricScooter extends ElectricVehicle {
     private String wheelDrive;
 
     public ElectricScooter(String brand, String model, int year, double price,
